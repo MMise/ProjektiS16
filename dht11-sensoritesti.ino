@@ -13,7 +13,7 @@ void loop()
   int chk = DHT.read11(DHT11_PIN);
   Serial.print("Lampotila = ");
   Serial.println(DHT.temperature); //printataan sarjamonitorille lämpötila
-  Serial.print("Ilmankosteus = %");
+  Serial.print("Ilmankosteus = ");
   Serial.println(DHT.humidity); //printataan sarjamonitorille ilmankosteus
   delay(1000);
 }
