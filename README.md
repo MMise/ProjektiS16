@@ -11,3 +11,7 @@ Lisäsin kaksi prosessoriympäristöt-kurssilla väännettyä Arduino-koodia. -V
 
 3.11.2016
 Lisätty DHT11-sensorin testauksessa käytetty koodi. Meidän sensorimme on mallia DHT22, mutta tämän koodinpätkän pitäisi toimia myös sillä. Koodi ja kirjasto peräisin osoitteesta: http://www.circuitbasics.com/how-to-set-up-the-dht11-humidity-sensor-on-an-arduino/ -VV
+
+3.11.2016
+-Lisätty lampotila_v_0_69
+-DS18B20 sensorille a.k.a rectal probe
