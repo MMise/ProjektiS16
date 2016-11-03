@@ -1,5 +1,4 @@
-
- #include <math.h> 
+#include <math.h> 
  //määritetään pinnejä
  const int VCCPin = A0; //Lisätty uusi
  const int xPin   = A1; //Muutettu
@@ -36,14 +35,18 @@ void loop()
   y = analogRead(yPin);
   z = analogRead(zPin);
   //lasketaan kiihtyvyydet sensoriarvoista
-  ax = 0.1464 * x - 49.084;
-  ay = 0.1459 * y - 48.678;
-  az = 0.1453 * z - 48.785;
+  double ax = 0.1464 * x - 49.084;
+  ax = constrain(ax, -9.81, 9.81);
+  double ay = 0.1459 * y - 48.678;
+  ay = constrain(ay, -9.81, 9.81);
+  double az = 0.1453 * z - 48.785;
+  az = constrain(az, -9.81, 9.81);
+  
   vektorinPituus = sqrt((ax * ax)+(ay * ay)+(az * az));
   //lasketaan kallistuskulmat
-  kallistusKulmaX = asin((ax/9.81) * 180/PI);
-  kallistusKulmaY = asin((ay/9.81) * 180/PI);
-  kallistusKulmaZ = asin((az/9.81) * 180/PI);
+  kallistusKulmaX = asin (ax/9.81) * (180/PI);
+  kallistusKulmaY = asin (ay/9.81) * (180/PI);
+  kallistusKulmaZ = asin (az/9.81) * (180/PI);
   //tulostetaan sarjamonitoriin
   Serial.print(" ax: ");
   Serial.print(ax);
@@ -69,4 +72,3 @@ void loop()
   // viive
   delay(100);  
 }
-
