@@ -15,3 +15,6 @@ Lisätty DHT11-sensorin testauksessa käytetty koodi. Meidän sensorimme on mall
 3.11.2016
 -Lisätty lampotila_v_0_69
 -DS18B20 sensorille a.k.a rectal probe
+
+4.11.2016
+Lisätty BMP280-barometrin koodi, ei vielä testattu. Kirjasto ja koodi peräisin osoitteesta https://learn.adafruit.com/adafruit-bmp280-barometric-pressure-plus-temperature-sensor-breakout/wiring-and-test -VV
