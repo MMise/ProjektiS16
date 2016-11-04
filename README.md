@@ -18,3 +18,6 @@ Lisätty DHT11-sensorin testauksessa käytetty koodi. Meidän sensorimme on mall
 
 4.11.2016
 Lisätty BMP280-barometrin koodi, ei vielä testattu. Kirjasto ja koodi peräisin osoitteesta https://learn.adafruit.com/adafruit-bmp280-barometric-pressure-plus-temperature-sensor-breakout/wiring-and-test -VV
+
+4.11.2016
+-OLED näyttö vaatii Adafruit SSD1306 ja GFX-kirjastot (löytyy arduinon library managerista)
