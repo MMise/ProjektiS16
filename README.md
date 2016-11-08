@@ -23,4 +23,4 @@ Lisätty BMP280-barometrin koodi, ei vielä testattu. Kirjasto ja koodi peräisi
 -OLED näyttö vaatii Adafruit SSD1306 ja GFX-kirjastot (löytyy arduinon library managerista)
 
 8.11.2016
-Lisätty Prosessoriympäristöt-kurssilla tehty noppakoodi, jossa käytetään AVR timeriä antamaan satunnainen seed. CreateRandomSeed-funktio löydetty osoitteesta https://sites.google.com/site/astudyofentropy/project-definition/timer-jitter-entropy-sources/entropy-library/arduino-random-seed -VV
+Lisätty Prosessoriympäristöt-kurssilla tehty noppakoodi, jossa käytetään AVR timeriä antamaan satunnainen seed. CreateTrulyRandomSeed-funktio löydetty osoitteesta https://sites.google.com/site/astudyofentropy/project-definition/timer-jitter-entropy-sources/entropy-library/arduino-random-seed -VV
