@@ -15,8 +15,6 @@ void loop() {
   // put your main code here, to run repeatedly:
 int val = 0;
 int aanenKorkeus = analogRead (A2);
-Serial.print(aanenKorkeus);
-Serial.print("\n");
 if (digitalRead(11) == HIGH)
 {
   val = rand()%6;
