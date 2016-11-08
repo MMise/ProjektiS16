@@ -15,8 +15,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 int val = analogRead(A2);
-Serial.print(val);
-Serial.print("\n");
 if (val <= 128)
   {
     digitalWrite(2, HIGH);
