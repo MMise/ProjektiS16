@@ -171,13 +171,13 @@ void loop()
   
   float temperature = (temperature280 + temperature22) / 2;
   
-lcd.setCursor(1, 0);
+lcd.setCursor(0, 1);
 lcd.print(temperature);
 lcd.print(" C");
-lcd.setCursor(2, 0);
+lcd.setCursor(0, 2);
 lcd.print(hPa);
 lcd.print(" hPa");
-lcd.setCursor(3, 0);
+lcd.setCursor(0, 3);
 lcd.print(humidity);
 lcd.print(" %");
   delay(1000); // delay pienemmäksi? Alunperin tässä oli tarkoitus vain päivittää kellonaika joka sekunti
