@@ -36,3 +36,6 @@ Lisätty weatherstation_basic.ino. Wire.h-kirjasto tulee Arduino IDEn mukana. Ko
   funktiot löydetty Arduinon library managerin avulla.
   
   -DS1307. Tämän sensorin koodi toimii koko koodin runkona. Funktiot ja itse koodi peräisin osoitteesta http://tronixstuff.com/2014/12/01/tutorial-using-ds1307-and-ds3231-real-time-clock-modules-with-arduino/, tekijä John Boxall. Ville-Veikko Komulainen soveltanut koodia LCD-näyttöä ja suomalaista ajanesitystapaa varten. -VV
+  
+23.11.2016
+Päivitetty weatherstation_basic-koodia vastaamaan I2C-sarjaväylällä kommunikoivaa LCD-näyttöä varten. LCD-näyttöä varten tarvittava kirjasto peräisin osoitteesta https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library, tekijä Frank de Brabander
