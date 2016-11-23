@@ -39,3 +39,8 @@ Lisätty weatherstation_basic.ino. Wire.h-kirjasto tulee Arduino IDEn mukana. Ko
   
 23.11.2016
 Päivitetty weatherstation_basic-koodia toimimaan I2C-sarjaväylällä toimivan LCD-näytön kanssa. LCD-näyttöä varten tarvittava kirjasto peräisin osoitteesta https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library, tekijä Frank de Brabander. -VV
+
+23.11.2016
+"Kun herätyskellolla ei ole tarpeeksi voimaa nostaa miestä ylös sängystä" - Joku mies joskus
+-Lisätty DS1307 feat. painonappi. Eli jos koodia läpi käydessäni ymmärsin oikein niin tämä tekee saman asian kuin weatherstation_basic koodissa oleva kellomoduulipätkä. Mukava myös ajan säätäminen painonapeilla. Sauce: http://forum.arduino.cc/index.php?topic=104006.0 
+-Jokinen
