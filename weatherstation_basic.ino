@@ -1,5 +1,5 @@
-#include <LiquidCrystal.h>
-LiquidCrystal lcd( 8, 9, 4, 5, 6, 7 );  //LCD-näytön pinnit
+#include "LiquidCrystal_I2C.h"
+LiquidCrystal_I2C lcd(0x3F, 20, 4); //LCD-näytön alustus
 #include "i2c.h"
 #include "i2c_BMP280.h"
 #include <dht.h>
@@ -27,7 +27,7 @@ void setup()
 {
   Wire.begin();
   Serial.begin(9600);
-  lcd.begin(20, 4);
+  lcd.begin;
   // set the initial time here:
   // DS1307 seconds, minutes, hours, day, date, month, year
   // setDS1307time(30,42,21,4,26,11,14);        kommentoi pois, aseta arvot tähän?
@@ -171,14 +171,14 @@ void loop()
   
   float temperature = (temperature280 + temperature22) / 2;
   
-lcd.setCursor(0, 1);
-lcd.print(temperature);
-lcd.print(" C");
-lcd.setCursor(0, 2);
-lcd.print(hPa);
-lcd.print(" hPa");
-lcd.setCursor(0, 3);
-lcd.print(humidity);
-lcd.print(" %");
+  lcd.setCursor(0, 1);
+  lcd.print(temperature);
+  lcd.print(" C");
+  lcd.setCursor(0, 2);
+  lcd.print(hPa);
+  lcd.print(" hPa");
+  lcd.setCursor(0, 3);
+  lcd.print(humidity);
+  lcd.print(" %");
   delay(1000); // delay pienemmäksi? Alunperin tässä oli tarkoitus vain päivittää kellonaika joka sekunti
 }
