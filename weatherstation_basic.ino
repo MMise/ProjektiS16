@@ -28,6 +28,7 @@ void setup()
   Wire.begin();
   Serial.begin(9600);
   lcd.begin;
+  lcd.backlight();
   // set the initial time here:
   // DS1307 seconds, minutes, hours, day, date, month, year
   // setDS1307time(30,42,21,4,26,11,14);        kommentoi pois, aseta arvot tähän?
