@@ -39,7 +39,7 @@ dayOfMonth, byte month, byte year)
 {
   // Asettaa DS1307:n ajan
   Wire.beginTransmission(DS1307_I2C_ADDRESS);
-  Wire.write(0); // set next input to start at the seconds register
+  Wire.write(0);
   Wire.write(decToBcd(second)); // sekunnit
   Wire.write(decToBcd(minute)); // minuutit
   Wire.write(decToBcd(hour)); // tunnit
@@ -187,5 +187,5 @@ void loop()
   lcd.setCursor(0, 3);
   lcd.print(humidity);
   lcd.print(" %");
-  delay(250); // delay pienemmäksi? Alunperin tässä oli tarkoitus vain päivittää kellonaika joka sekunti
+  delay(250);
 }
