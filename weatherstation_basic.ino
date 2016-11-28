@@ -1,12 +1,21 @@
+//LCD-NÄYTÖN ALUSTUS
 #include "LiquidCrystal_I2C.h"
-LiquidCrystal_I2C lcd(0x3F, 20, 4); //LCD-näytön alustus
+LiquidCrystal_I2C lcd(0x3F, 20, 4);
+
+//BMP280-SENSORIN ALUSTUS
 #include "i2c.h"
 #include "i2c_BMP280.h"
-#include <dht.h>
-#define DS1307_I2C_ADDRESS 0x68 // HAE I2C-SKANNERILLA KELLON OSOITE!!!
-#define DHT22_PIN 2
-dht DHT;
-BMP280 bmp280; //Painesensorin osoitteen määritys
+BMP280 bmp280;
+
+//DS1307-KELLOMODUULIN ALUSTUS
+#define DS1307_I2C_ADDRESS 0x68
+
+//DHT22-SENSORIN ALUSTUS
+#include <DHT.h>
+#include <DHT_U.h>
+#define DHTPIN 2
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
 
 
 //MUUNNOSFUNKTIOIDEN MÄÄRITYS:
@@ -22,33 +31,11 @@ byte bcdToDec(byte val)
   return( (val/16*10) + (val%16) );
 }
 
-//ALUSTETAAN SENSORIT JA LCD-NÄYTTÖ
-void setup()
-{
-  Wire.begin();
-  Serial.begin(9600);
-  lcd.begin;
-  lcd.backlight();
-  // set the initial time here:
-  // DS1307 seconds, minutes, hours, day, date, month, year
-  // setDS1307time(30,42,21,4,26,11,14);        kommentoi pois, aseta arvot tähän?
-      Serial.print("Probe BMP280: ");
-    if (bmp280.initialize()) Serial.println("Sensor found"); //jätä vain bmp280.initialize() kunhan on testattu, että sensori löytyy
-    else
-    {
-        Serial.println("Sensor missing");
-        while (1) {}
-    }
-
-    // onetime-measure:
-    bmp280.setEnabled(0);
-    bmp280.triggerMeasurement();
-}
-
-//I2C-DATASIIRTOFUNKTIOIDEN MÄÄRITTELY:
+//I2C-DATASIIRTOFUNKTIOIDEN MÄÄRITYS:
 // Arduinolta kellolle:
+
 void setDS1307time(byte second, byte minute, byte hour, byte dayOfWeek, byte
-dayOfMonth, byte month, byte year)              //vai tähän?
+dayOfMonth, byte month, byte year)
 {
   // Asettaa DS1307:n ajan
   Wire.beginTransmission(DS1307_I2C_ADDRESS);
@@ -64,11 +51,15 @@ dayOfMonth, byte month, byte year)              //vai tähän?
 }
 
 /*
- KOMMENTOI YLLÄOLEVA FUNKTIO POIS KUN SE ON LADATTU ENSIMMÄISEN KERRAN ARDUINOON. 
- TÄMÄN JÄLKEEN LATAA SKETSI UUDESTAAN, JOTTA KELLONAJAKSI EI ASETETA VANHOJA ARVOJA JOKA KERTA KUN LAITE KÄYNNISTYY
+ * Ylläoleva funktio pitää kommentoida pois kun aika on onnistuneesti asetettu ensimmäisen kerran. 
+ * Tämän jälkeen koodi lähetetään Arduinolle uudestaan ja kello jatkaa laskemistaan.
  */
 
+ 
+
+ 
 //Kellolta Arduinolle:
+
 void readDS1307time(byte *second,
 byte *minute,
 byte *hour,
@@ -82,9 +73,7 @@ byte *year)
   Wire.endTransmission();
   Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
   // Pyytää DS1307:lta 7 bittiä dataa alkaen rekisteristä 00h
-  /*
-   Täytyykö datasheetistä hakea jokaisen rekisterin osoite?
-   */
+ 
   *second = bcdToDec(Wire.read() & 0x7f);
   *minute = bcdToDec(Wire.read());
   *hour = bcdToDec(Wire.read() & 0x3f);
@@ -150,10 +139,27 @@ void displayTime()
   }
 }
 
+//ALUSTETAAN SENSORIT JA LCD-NÄYTTÖ
+void setup()
+{
+  Wire.begin();
+  Serial.begin(9600);
+  lcd.begin();
+  dht.begin();
+  bmp280.initialize();
+  bmp280.setEnabled(0);
+  bmp280.triggerMeasurement();
+  
+  // seuraavassa osassa asetetaan aika sulkujen sisään seuraavassa järjestyksessä, pilkulla erottaen:
+  // sekunnit, minuutit, tunnit, päivämäärä, viikonpäivä (1 = SU, 2 = MA jne), kuukausi, vuosi (00-99)
+  
+  setDS1307time(10,44,11,2,28,11,16);  //tämäkin pitää kommentoida pois onnistuneen ajan asetuksen jälkeen
+}
 
 void loop()
 {
   displayTime(); // Aika LCD-näytölle
+  
   /* TIEDOT BMP280:lta */
   bmp280.awaitMeasurement();
   float temperature280;
@@ -164,9 +170,9 @@ void loop()
   bmp280.triggerMeasurement();
 
   /*TIEDOT DHT22:lta */
-  int chk = DHT.read11(DHT22_PIN);
-  float temperature22 = DHT.temperature;
-  float humidity = DHT.humidity;
+  
+  float temperature22 = dht.readTemperature();
+  float humidity = dht.readHumidity();
 
   /*ANTURIEN LUKEMIEN KESKIARVO*/
   
@@ -181,5 +187,5 @@ void loop()
   lcd.setCursor(0, 3);
   lcd.print(humidity);
   lcd.print(" %");
-  delay(1000); // delay pienemmäksi? Alunperin tässä oli tarkoitus vain päivittää kellonaika joka sekunti
+  delay(250); // delay pienemmäksi? Alunperin tässä oli tarkoitus vain päivittää kellonaika joka sekunti
 }
