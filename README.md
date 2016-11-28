@@ -44,3 +44,6 @@ Päivitetty weatherstation_basic-koodia toimimaan I2C-sarjaväylällä toimivan 
 "Kun herätyskellolla ei ole tarpeeksi voimaa nostaa miestä ylös sängystä" - Joku mies joskus
 -Lisätty DS1307 feat. painonappi. Eli jos koodia läpi käydessäni ymmärsin oikein niin tämä tekee saman asian kuin weatherstation_basic koodissa oleva kellomoduulipätkä. Mukava myös ajan säätäminen painonapeilla. Sauce: http://forum.arduino.cc/index.php?topic=104006.0 
 -Jokinen
+
+28.11.2016
+Lisätty DHT22-sensorin testattu ja toimiva koodi, integroitu weatherstation_basic-koodiin. Weatherstation_basic on nyt testattu ja todettu toimivaksi. Sääaseman perustoteutus valmis.
