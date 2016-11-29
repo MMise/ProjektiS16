@@ -1,4 +1,4 @@
-float haeAika(sekuntit, minuutit, tunnit, vknpv, paiva, kuukausi, vuosi)
+float haeAika(sekuntit, minuutit, tunnit, paiva, kuukausi, vuosi)
 {
   byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
   readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
@@ -13,10 +13,6 @@ float haeAika(sekuntit, minuutit, tunnit, vknpv, paiva, kuukausi, vuosi)
   else if (tunnit == 1)
   {
     return hour, DEC;
-  }
-  else if (vknpv == 1)
-  {
-    return dayOfWeek;
   }
   else if (paiva == 1)
   {
