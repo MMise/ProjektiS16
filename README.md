@@ -47,3 +47,6 @@ Päivitetty weatherstation_basic-koodia toimimaan I2C-sarjaväylällä toimivan 
 
 28.11.2016
 Lisätty DHT22-sensorin testattu ja toimiva koodi, integroitu weatherstation_basic-koodiin. Weatherstation_basic on nyt testattu ja todettu toimivaksi. Sääaseman perustoteutus valmis.
+
+29.11.2016
+Malila lisännyt ajanhakufunktion, VV lisännyt pahasti vaiheessa olevan weatherstation_advanced-koodiin, johon voi alkaa kokeilemaan erilaisia lisäominaisuuksia.
