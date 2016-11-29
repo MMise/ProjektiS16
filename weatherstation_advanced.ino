@@ -151,6 +151,40 @@ void displayTime()
   }
 }
 
+float haeAika(sekuntit, minuutit, tunnit, vknpv, paiva, kuukausi, vuosi)
+{
+  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+  readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
+  if (sekunnit == 1)
+  {
+    return second, DEC;
+  }
+  else if (minuutit == 1)
+  {
+    return minute, DEC;
+  }
+  else if (tunnit == 1)
+  {
+    return hour, DEC;
+  }
+  else if (vknpv == 1)
+  {
+    return dayOfWeek;
+  }
+  else if (paiva == 1)
+  {
+    return dayOfMonth, DEC;
+  }
+  else if (kuukausi == 1)
+  {
+    return month, DEC;
+  }
+  else if (vuosi == 1)
+  {
+    return year, DEC;
+  }
+}
+
 //ALUSTETAAN SENSORIT JA LCD-NÄYTTÖ
 void setup()
 {
