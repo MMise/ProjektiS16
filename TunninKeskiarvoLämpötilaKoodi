@@ -1,0 +1,30 @@
+float xminuutinvalein = (haeAika(0,1,0,0,0,0)) % 10;
+  float tunninlampo[5];
+  float keskilampo = (tunninlampo[0] + tunninlampo[1] + tunninlampo[2] + tunninlampo[3] + tunninlampo[4] + tunninlampo[5]) / 6;
+  if xminuutinvalein == 0
+    {
+      if haeAika(0,1,0,0,0,0) == 10
+      {
+        float tunninlampo[0] = temperature;
+      }
+      else if haeAika(0,1,0,0,0,0) == 20
+      {
+        float tunninlampo[1] = temperature;
+      }
+      else if haeAika(0,1,0,0,0,0) == 30
+      {
+        float tunninlampo[2] = temperature;
+      }      
+      else if haeAika(0,1,0,0,0,0) == 40
+      {
+        float tunninlampo[3] = temperature;
+      }      
+      else if haeAika(0,1,0,0,0,0) == 50
+      {
+        float tunninlampo[4] = temperature;
+      }
+      else if haeAika(0,1,0,0,0,0) == 0
+      {
+        float tunninlampo[5] = temperature;
+      }
+    }
