@@ -1,0 +1,26 @@
+if(inputString = "average")
+    {
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Averages from: ");
+      lcd.print((haeAika(0,0,1,0,0,0) - 1);
+      lcd.print("-");
+      lcd.print(haeAika(0,0,1,0,0,0);
+      lcd.setCursor(0,1);
+      lcd.print("C:");
+      lcd.print(keskilampo)
+      lcd.setCursor(0,2);
+      lcd.print("hPa:");
+      lcd.print(keskipaine)
+      lcd.setCursor(0,3)
+      lcd.print("Hum:");
+      lcd.print(keskikosteus)
+      Serial.print("C: ");
+      Serial.println(keskilampo)
+      Serial.print("hPa: ");
+      Serial.print(keskipaine)
+      Serial.print("Hum:");
+      Serial.print(keskikosteus)
+      delay(5000);
+      lcd.clear();  
+    }
