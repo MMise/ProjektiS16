@@ -1,3 +1,4 @@
+
 //LCD-NÄYTÖN ALUSTUS
 #include "LiquidCrystal_I2C.h"
 LiquidCrystal_I2C lcd(0x3F, 20, 4);
@@ -151,35 +152,34 @@ void displayTime()
   }
 }
 
-float haeAika(sekuntit, minuutit, tunnit, vknpv, paiva, kuukausi, vuosi)
+float haeAika(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year)
 {
-  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
   readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
-  if (sekunnit == 1)
+  if (second == 1)
   {
     return second, DEC;
   }
-  else if (minuutit == 1)
+  else if (minute == 1)
   {
     return minute, DEC;
   }
-  else if (tunnit == 1)
+  else if (hour == 1)
   {
     return hour, DEC;
   }
-  else if (vknpv == 1)
+  else if (dayOfWeek == 1)
   {
     return dayOfWeek;
   }
-  else if (paiva == 1)
+  else if (dayOfMonth == 1)
   {
     return dayOfMonth, DEC;
   }
-  else if (kuukausi == 1)
+  else if (month == 1)
   {
     return month, DEC;
   }
-  else if (vuosi == 1)
+  else if (year == 1)
   {
     return year, DEC;
   }
@@ -225,7 +225,6 @@ void loop()
 
   float temperature = (temperature280 + temperature22) / 2;
   
-/*
 
   {
     float maxTemp = temperature;
@@ -235,37 +234,31 @@ void loop()
     float maxHum = humidity;
     float minHum = humidity;
   }
-
   if (temperature > maxTemp)
   {
     maxTemp = temperature;
   }
-
   if (temperature < minTemp)
   {
     minTemp = temperature;
   }
-
   if (hPa > maxPress)
   {
     maxPress = hPa;
   }
-
   if (hPa < minPress)
   {
     minPress = hPa;
   }
-
   if (humidity > maxHum)
   {
     maxHum = humidity;
   }
-
   if (humidity < minHum)
   {
     minHum = humidity;
   }
-*/
+
 
   //Tulostetaan loputkin tiedot näytölle:
   lcd.setCursor(0, 1);
@@ -309,32 +302,58 @@ void loop()
       lcd.clear();  
     }
     
-/*
-    if(inputString = "maxmin")
+
+    if(inputString == "maxmin")
     {
       lcd.clear();
       lcd.setCursor(0,0);
-      lcd.print("MAX:      MIN:");
+      lcd.print("MAX:");
+      lcd.setCursor(12,0);
+      lcd.print("MIN:");
       lcd.setCursor(0,1);
       lcd.print("C:");
-      lcd.print(maxTemp)
-      lcd.print("/")
-      lcd.print(minTemp)
+      lcd.print(maxTemp);
+      lcd.setCursor(12,1);
+      lcd.print(minTemp);
       lcd.setCursor(0,2);
       lcd.print("hPa:");
-      lcd.print(maxPress)
-      lcd.print("/")
-      lcd.print(minPress)
-      lcd.setCursor(0,3)
+      lcd.print(maxPress);
+      lcd.setCursor(12,2);
+      lcd.print(minPress);
+      lcd.setCursor(0,3);
       lcd.print("Hum:");
-      lcd.print(maxHum)
-      lcd.print("/")
-      lcd.print(minHum)
-      delay(5000);
+      lcd.print(maxHum);
+      lcd.setCursor(12,3);
+      lcd.print(minHum);
+      delay(10000);
       lcd.clear();  
     }
-/*    
-    if(inputString == "aseta")
+    if(inputString == "fitta")
+    {
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Om hade jag en");
+      lcd.setCursor(0,1);
+      lcd.print("pistol skulle jag");
+      lcd.setCursor(0,2);
+      lcd.print("satta en kula precis");
+      lcd.setCursor(9,3);
+      lcd.print("har");
+      delay(1800000);
+      lcd.clear();
+    }
+    /*if(inputString == "tilanne")
+    {
+      Serial.print(temperature);
+      Serial.println(" C");
+      Serial.print(hPa);
+      Serial.println(" hPa");
+      Serial.print(humidity);
+      Serial.println(" %");
+      delay(5000);
+    }
+    */
+    /*if(inputString == "aseta")
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
       Wire.write(0);
@@ -345,8 +364,8 @@ void loop()
       Serial.println("Anna tunnit:");
       Wire.write(decToBcd(hour = Serial.read())); // tunnit
       Wire.endTransmission();
-    }
-*/    
+    }*/
+    
     inputString = ""; //tyhjennetään muuttuja
   }
 }
