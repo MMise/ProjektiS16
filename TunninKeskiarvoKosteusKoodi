@@ -1,0 +1,30 @@
+ float xminuutinvalein = (haeAika(0,1,0,0,0,0)) % 10;
+  float tunninkosteus[5];
+  float keskilampo = (tunninkosteus[0] + tunninkosteus[1] + tunninkosteus[2] + tunninkosteus[3] + tunninkosteus[4] + tunninkosteus[5]) / 6;
+  if xminuutinvalein == 0
+    {
+      if haeAika(0,1,0,0,0,0) == 10
+      {
+        float tunninkosteus[0] = humidity;
+      }
+      else if haeAika(0,1,0,0,0,0) == 20
+      {
+        float tunninkosteus[1] = humidity;
+      }
+      else if haeAika(0,1,0,0,0,0) == 30
+      {
+        float tunninkosteus[2] = humidity;
+      }      
+      else if haeAika(0,1,0,0,0,0) == 40
+      {
+        float tunninkosteus[3] = humidity;
+      }      
+      else if haeAika(0,1,0,0,0,0) == 50
+      {
+        float tunninkosteus[4] = humidity;
+      }
+      else if haeAika(0,1,0,0,0,0) == 0
+      {
+        float tunninkosteus[5] = humidity;
+      }
+    }
