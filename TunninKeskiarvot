@@ -1,4 +1,54 @@
-if(inputString = "average")
+  float xminuutinvalein = (haeAika(0,1,0,0,0,0)) % 10;
+  float tunninpaine[5];
+  float tunninlampo[5];
+  float tunninkosteus[5];
+  float keskipaine = (tunninpaine[0] + tunninpaine[1] + tunninpaine[2] + tunninpaine[3] + tunninpaine[4] + tunninpaine[5]) / 6;
+  float keskilampo = (tunninlampo[0] + tunninlampo[1] + tunninlampo[2] + tunninlampo[3] + tunninlampo[4] + tunninlampo[5]) / 6; 
+  float keskilampo = (tunninkosteus[0] + tunninkosteus[1] + tunninkosteus[2] + tunninkosteus[3] + tunninkosteus[4] + tunninkosteus[5]) / 6;
+  
+  
+  if xminuutinvalein == 0                            //Tallentaa joka kymmenes minuutti sensoreiden arvot talteen
+    {
+      if haeAika(0,1,0,0,0,0) == 10
+      {
+        float tunninkosteus[0] = humidity;
+        float tunninpaine[0] = hPa;
+        float tunninlampo[0] = temperature; 
+      }
+      else if haeAika(0,1,0,0,0,0) == 20
+      {
+        float tunninkosteus[1] = humidity;
+        float tunninpaine[1] = hPa;
+        float tunninlampo[1] = temperature;
+      }
+      else if haeAika(0,1,0,0,0,0) == 30
+      {
+        float tunninkosteus[2] = humidity;
+        float tunninpaine[2] = hPa;
+        float tunninlampo[2] = temperature;
+      }      
+      else if haeAika(0,1,0,0,0,0) == 40
+      {
+        float tunninkosteus[3] = humidity;
+        float tunninpaine[3] = hPa;
+        float tunninlampo[3] = temperature;
+      }      
+      else if haeAika(0,1,0,0,0,0) == 50
+      {
+        float tunninkosteus[4] = humidity;
+        float tunninpaine[4] = hPa;
+        float tunninlampo[4] = temperature;
+      }
+      else if haeAika(0,1,0,0,0,0) == 0
+      {
+        float tunninkosteus[5] = humidity;
+        float tunninpaine[5] = hPa;
+        float tunninlampo[5] = temperature;
+      }
+    }
+    
+    
+if(inputString = "average") 
     {
       lcd.clear();
       lcd.setCursor(0,0);
