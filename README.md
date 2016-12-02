@@ -50,3 +50,6 @@ Lisätty DHT22-sensorin testattu ja toimiva koodi, integroitu weatherstation_bas
 
 29.11.2016
 Malila lisännyt ajanhakufunktion, VV lisännyt pahasti vaiheessa olevan weatherstation_advanced-koodiin, johon voi alkaa kokeilemaan erilaisia lisäominaisuuksia.
+
+2.12.2016
+Lisätty arvioituKorkeus-koodinpätkä, ei vielä testattu. Tällä pitäisi onnistua void loop -pätkän suorituksen keskeyttäminen siihen asti, että Arduino saa sarjamonitorilta tiedon tämänhetkisestä ilmanpaineesta merenpinnan tasolla. Korkeuden laskemiseen käytetään samaa kaavaa, joka löytyy BMP280-sensorin kirjaston readAltitude()-funktiosta. -VV
