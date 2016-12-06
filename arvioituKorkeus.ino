@@ -6,8 +6,7 @@ if (inputString == "korkeus")
   lcd.setCursor(0,0);
   lcd.print("Odotetaan tietoja.")
   Serial.println("Anna paine merenpinnan tasolla:")
-  delay(5000); //annetaan käyttäjälle aikaa lukea sarjamonitorin viesti.
-  Serial.flush(); //Tyhjennetään sarjamonitori
+  Serial.flush(); //Tyhjennetään sarjamonitorin puskuri
   while(!Serial.available()); //Odotellaan syötettä
   syotettyPaine = Serial.parseFloat();
   Serial.println(syotettyPaine);
