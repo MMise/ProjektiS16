@@ -9,7 +9,7 @@ if (inputString == "korkeus")
   delay(5000); //annetaan käyttäjälle aikaa lukea sarjamonitorin viesti.
   Serial.flush(); //Tyhjennetään sarjamonitori
   while(!Serial.available()); //Odotellaan syötettä
-  syotettyPaine = (float)Serial.read();
+  syotettyPaine = Serial.parseFloat();
   Serial.println(syotettyPaine);
   korkeus = 44330 * (1.0 - pow(hPa/syotettyPaine, 0.1903));
   lcd.setCursor(0,0);
