@@ -11,39 +11,39 @@
     {
       if haeAika(0,1,0,0,0,0) == 10
       {
-        float tunninkosteus[0] = humidity;
-        float tunninpaine[0] = hPa;
-        float tunninlampo[0] = temperature; 
+        tunninkosteus[0] = humidity;
+        tunninpaine[0] = hPa;
+        tunninlampo[0] = temperature; 
       }
       else if haeAika(0,1,0,0,0,0) == 20
       {
-        float tunninkosteus[1] = humidity;
-        float tunninpaine[1] = hPa;
-        float tunninlampo[1] = temperature;
+        tunninkosteus[1] = humidity;
+        tunninpaine[1] = hPa;
+        tunninlampo[1] = temperature;
       }
       else if haeAika(0,1,0,0,0,0) == 30
       {
-        float tunninkosteus[2] = humidity;
-        float tunninpaine[2] = hPa;
-        float tunninlampo[2] = temperature;
+        tunninkosteus[2] = humidity;
+        tunninpaine[2] = hPa;
+        tunninlampo[2] = temperature;
       }      
       else if haeAika(0,1,0,0,0,0) == 40
       {
-        float tunninkosteus[3] = humidity;
-        float tunninpaine[3] = hPa;
-        float tunninlampo[3] = temperature;
+        tunninkosteus[3] = humidity;
+        tunninpaine[3] = hPa;
+        tunninlampo[3] = temperature;
       }      
       else if haeAika(0,1,0,0,0,0) == 50
       {
-        float tunninkosteus[4] = humidity;
-        float tunninpaine[4] = hPa;
-        float tunninlampo[4] = temperature;
+        tunninkosteus[4] = humidity;
+        tunninpaine[4] = hPa;
+        tunninlampo[4] = temperature;
       }
       else if haeAika(0,1,0,0,0,0) == 0
       {
-        float tunninkosteus[5] = humidity;
-        float tunninpaine[5] = hPa;
-        float tunninlampo[5] = temperature;
+        tunninkosteus[5] = humidity;
+        tunninpaine[5] = hPa;
+        tunninlampo[5] = temperature;
       }
     }
     
