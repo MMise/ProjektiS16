@@ -143,9 +143,9 @@ void displayTime()
   }
 }
 
-float haeAika(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year)
+float haeAika(byte second, byte minute, byte hour, byte dayOfMonth, byte month, byte year)
 {
-  readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
+  readDS1307time(&second, &minute, &hour, &dayOfMonth, &month, &year);
   if (second == 1)
   {
     return second, DEC;
@@ -157,10 +157,6 @@ float haeAika(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMon
   else if (hour == 1)
   {
     return hour, DEC;
-  }
-  else if (dayOfWeek == 1)
-  {
-    return dayOfWeek;
   }
   else if (dayOfMonth == 1)
   {
