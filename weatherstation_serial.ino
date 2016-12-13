@@ -133,8 +133,49 @@ void displayTime()
 
 float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
 {
+  //byte *second, byte *minute, byte *hour, byte *dayOfWeek, byte *dayOfMonth, byte *month, byte *year
+  Wire.beginTransmission(DS1307_I2C_ADDRESS);
+  Wire.write(0); // Asettaa DS1307:n rekisteriosoittimen osoitteeseen 00h
+  Wire.endTransmission();
+  Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
+  // Pyytää DS1307:lta 7 bittiä dataa alkaen rekisteristä 00h
+ 
+  *second = bcdToDec(Wire.read() & 0x7f);
+  *minute = bcdToDec(Wire.read());
+  *hour = bcdToDec(Wire.read() & 0x3f);
+  *dayOfWeek = bcdToDec(Wire.read());
+  *dayOfMonth = bcdToDec(Wire.read());
+  *month = bcdToDec(Wire.read());
+  *year = bcdToDec(Wire.read());
+ if sekunnit == 1
+ {
+  return second, DEC;
+ }
+ else if minuutit == 1
+ {
+  return minute, DEC;
+ }
+ else if tunnit == 1
+ {
+  return hour, DEC;
+ }
+ else if paiva == 1
+ {
+  return dayOfMonth, DEC;
+ }
+ else if kuukausi == 1
+ {
+  return month, DEC;
+ }
+ else if vuosi == 1
+ {
+  return year, DEC;
+ }
+}
+
+/*float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
+{
   byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
-  readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
   if (sekunnit == 1)
   {
     return second, DEC;
@@ -158,7 +199,7 @@ float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float k
   else if (vuosi == 1)
   {
     return year, DEC;
-  }
+  }*/
 }
 //ALUSTETAAN SENSORIT
 void setup()
@@ -214,7 +255,8 @@ void loop()
   Serial.print(humidity);
   Serial.println(" %");
   delay(250);
-
+  
+   
   float xminuutinvalein = (haeAika(0,1,0,0,0,0), DEC % 10);
   float tunninpaine[6] = {};
   float tunninlampo[6] = {};
