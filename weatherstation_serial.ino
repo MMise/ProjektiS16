@@ -133,7 +133,13 @@ void displayTime()
 
 float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
 {
-  //byte *second, byte *minute, byte *hour, byte *dayOfWeek, byte *dayOfMonth, byte *month, byte *year
+  byte *second;
+  byte *minute;
+  byte *hour;
+  byte *dayOfWeek;
+  byte *dayOfMonth;
+  byte *month;
+  byte *year;
   Wire.beginTransmission(DS1307_I2C_ADDRESS);
   Wire.write(0); // Asettaa DS1307:n rekisteriosoittimen osoitteeseen 00h
   Wire.endTransmission();
@@ -147,27 +153,27 @@ float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float k
   *dayOfMonth = bcdToDec(Wire.read());
   *month = bcdToDec(Wire.read());
   *year = bcdToDec(Wire.read());
- if sekunnit == 1
+ if (sekunnit == 1)
  {
   return second, DEC;
  }
- else if minuutit == 1
+ else if (minuutit == 1)
  {
   return minute, DEC;
  }
- else if tunnit == 1
+ else if (tunnit == 1)
  {
   return hour, DEC;
  }
- else if paiva == 1
+ else if (paiva == 1)
  {
   return dayOfMonth, DEC;
  }
- else if kuukausi == 1
+ else if (kuukausi == 1)
  {
   return month, DEC;
  }
- else if vuosi == 1
+ else if (vuosi == 1)
  {
   return year, DEC;
  }
@@ -265,7 +271,7 @@ void loop()
   float keskilampo = (tunninlampo[0] + tunninlampo[1] + tunninlampo[2] + tunninlampo[3] + tunninlampo[4] + tunninlampo[5]) / 6; 
   float keskikosteus = (tunninkosteus[0] + tunninkosteus[1] + tunninkosteus[2] + tunninkosteus[3] + tunninkosteus[4] + tunninkosteus[5]) / 6;
 
-  if (xminuutinvalein == 0)                            //Tallentaa joka kymmenes minuutti sensoreiden arvot talteen
+  if (xminuutinvalein == 0 & second == 0)                            //Tallentaa joka kymmenes minuutti sensoreiden arvot talteen
     {
       if (haeAika(0,1,0,0,0,0) == 10)
       {
