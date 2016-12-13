@@ -133,13 +133,9 @@ void displayTime()
 
 float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
 {
-  byte *second;
-  byte *minute;
-  byte *hour;
-  byte *dayOfWeek;
-  byte *dayOfMonth;
-  byte *month;
-  byte *year;
+  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+  readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
+ /*
   Wire.beginTransmission(DS1307_I2C_ADDRESS);
   Wire.write(0); // Asettaa DS1307:n rekisteriosoittimen osoitteeseen 00h
   Wire.endTransmission();
@@ -152,7 +148,7 @@ float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float k
   *dayOfWeek = bcdToDec(Wire.read());
   *dayOfMonth = bcdToDec(Wire.read());
   *month = bcdToDec(Wire.read());
-  *year = bcdToDec(Wire.read());
+  *year = bcdToDec(Wire.read());*/
  if (sekunnit == 1)
  {
   return second, DEC;
