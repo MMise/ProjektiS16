@@ -131,29 +131,22 @@ void displayTime()
   }
 }
 
-float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
+float haeAika
+  (int minuutti = 0,
+  int sekunnit = 0,
+  int tunnit = 0,
+  int paiva = 0,
+  int kuukausi = 0,
+  int vuosi = 0)
 {
+  
   byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
   readDS1307time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
- /*
-  Wire.beginTransmission(DS1307_I2C_ADDRESS);
-  Wire.write(0); // Asettaa DS1307:n rekisteriosoittimen osoitteeseen 00h
-  Wire.endTransmission();
-  Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
-  // Pyytää DS1307:lta 7 bittiä dataa alkaen rekisteristä 00h
- 
-  *second = bcdToDec(Wire.read() & 0x7f);
-  *minute = bcdToDec(Wire.read());
-  *hour = bcdToDec(Wire.read() & 0x3f);
-  *dayOfWeek = bcdToDec(Wire.read());
-  *dayOfMonth = bcdToDec(Wire.read());
-  *month = bcdToDec(Wire.read());
-  *year = bcdToDec(Wire.read());*/
  if (sekunnit == 1)
  {
   return second, DEC;
  }
- else if (minuutit == 1)
+ else if (minuutti == 1)
  {
   return minute, DEC;
  }
@@ -174,7 +167,6 @@ float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float k
   return year, DEC;
  }
 }
-
 /*float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
 {
   byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
@@ -202,7 +194,7 @@ float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float k
   {
     return year, DEC;
   }*/
-}
+
 //ALUSTETAAN SENSORIT
 void setup()
 {
@@ -216,7 +208,7 @@ void setup()
   // seuraavassa osassa asetetaan aika sulkujen sisään seuraavassa järjestyksessä, pilkulla erottaen:
   // sekunnit, minuutit, tunnit, päivämäärä, viikonpäivä (1 = SU, 2 = MA jne), kuukausi, vuosi (00-99)
   
-  setDS1307time(30,20,12,4,7,12,16);
+  //setDS1307time(30,34,12,3,13,12,16);
 /*
 Tämä pitää kommentoida pois onnistuneen ajan asetuksen jälkeen,
 ja tämän jälkeen sketsi ladataan uudestaan Arduinon muistiin.
@@ -267,7 +259,7 @@ void loop()
   float keskilampo = (tunninlampo[0] + tunninlampo[1] + tunninlampo[2] + tunninlampo[3] + tunninlampo[4] + tunninlampo[5]) / 6; 
   float keskikosteus = (tunninkosteus[0] + tunninkosteus[1] + tunninkosteus[2] + tunninkosteus[3] + tunninkosteus[4] + tunninkosteus[5]) / 6;
 
-  if (xminuutinvalein == 0 & second == 0)                            //Tallentaa joka kymmenes minuutti sensoreiden arvot talteen
+  if (xminuutinvalein == 0)                            //Tallentaa joka kymmenes minuutti sensoreiden arvot talteen
     {
       if (haeAika(0,1,0,0,0,0) == 10)
       {
