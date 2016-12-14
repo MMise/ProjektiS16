@@ -493,7 +493,29 @@ void loop()
       lcd.print(" %");
       delay(10000);
       lcd.clear();
-    }  
+    }
+   
+   //maksimien ja minimien nollaus
+   
+   if (inputString == "nollaus")
+    {
+      lcd.clear();
+      /*  
+          Tässä asetetaan sensorilukemat uusiksi maksimeiksi ja minimeiksi.
+          Jos arvoiksi asetettaisiin 0 ja laskuri j > 0 eivät maksimit ja
+          minimit tallentuisi oikein.
+      */
+      maxTemp = temperature;
+      minTemp = temperature;
+      maxPress = hPa;
+      minPress = hPa;
+      maxHum = humidity;
+      minHum = humidity;
+      lcd.setCursor(0,1);
+      lcd.print("Nollaus valmis!");
+      delay(2500);
+      lcd.clear();
+    }
    //top kek -tier komennot
    
    if(inputString == "fitta")
