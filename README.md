@@ -53,3 +53,6 @@ Malila lisännyt ajanhakufunktion, VV lisännyt pahasti vaiheessa olevan weather
 
 2.12.2016
 Lisätty arvioituKorkeus-koodinpätkä, ei vielä testattu. Tällä pitäisi onnistua void loop -pätkän suorituksen keskeyttäminen siihen asti, että Arduino saa sarjamonitorilta tiedon tämänhetkisestä ilmanpaineesta merenpinnan tasolla. Korkeuden laskemiseen käytetään samaa kaavaa, joka löytyy BMP280-sensorin kirjaston readAltitude()-funktiosta. -VV
+
+14.12.2016
+weatherstation_advanced-koodiin päivitetty tuntien ja päivien keskiarvolukemien laskemiset, maksimien ja minimien tallentamiset sekä nollaamiset ja kellonajan muuttaminen sarjamonitorissa (ei varmuutta toimivuudesta). -VV
