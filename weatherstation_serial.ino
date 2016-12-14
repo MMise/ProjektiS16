@@ -167,33 +167,6 @@ float haeAika
   return year, DEC;
  }
 }
-/*float haeAika(float sekunnit, float minuutit, float tunnit, float paiva, float kuukausi, float vuosi)
-{
-  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
-  if (sekunnit == 1)
-  {
-    return second, DEC;
-  }
-  else if (minuutit == 1)
-  {
-    return minute, DEC;
-  }
-  else if (tunnit == 1)
-  {
-    return hour, DEC;
-  }
-  else if (paiva == 1)
-  {
-    return dayOfMonth, DEC;
-  }
-  else if (kuukausi == 1)
-  {
-    return month, DEC;
-  }
-  else if (vuosi == 1)
-  {
-    return year, DEC;
-  }*/
 
 //ALUSTETAAN SENSORIT
 void setup()
