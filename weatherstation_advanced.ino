@@ -1,6 +1,6 @@
 //LCD-NÄYTÖN ALUSTUS
 #include "LiquidCrystal_I2C.h"
-LiquidCrystal_I2C lcd(0x3F, 20, 4);
+LiquidCrystal_I2C lcd(0x27, 20, 4);
 
 //BMP280-SENSORIN ALUSTUS
 #include "i2c.h"
@@ -22,7 +22,7 @@ DHT dht(DHTPIN, DHTTYPE);
 char junk;
 String inputString = "";
 
-//MUUTTUJAT KESKIARVOJEN LASKENTAAN LASKENTAAN
+//MUUTTUJAT KESKIARVOJEN LASKENTAAN:
 float tunninpaine;
 float tunninlampo;
 float tunninkosteus;
@@ -258,7 +258,7 @@ void loop()
     }
   }
 
-  if (minute % 59 == 0 && second == 0)
+  if (minute == 0 && second == 0)
   {
     paivanpaine = paivanpaine + hPa;
     paivanlampo = paivanlampo + temperature;
@@ -394,7 +394,7 @@ void loop()
       Serial.println(" hPa");
       Serial.print(humidity);
       Serial.println(" %");
-      delay(10000);
+      delay(5000);
     }
    
    //Kellonajan muuttaminen
@@ -425,9 +425,14 @@ void loop()
       Wire.write(decToBcd(hour = Serial.parseInt())); // tunnit
       Serial.println(hour);
       Wire.endTransmission();
+      lcd.clear();
+      Serial.flush();
+      inputString = "";
     }
 
-    if(inputString = "tunti") 
+    //tunnin keskiarvot
+
+    if(inputString == "tunti") 
     {
       lcd.clear();
       Serial.print("Arvoja laskettu summaan:");
@@ -446,22 +451,23 @@ void loop()
       Serial.println(keskipaineH);
       Serial.print("Hum:");
       Serial.println(keskikosteusH);
-      lcd.setCursor(0,1);
+      lcd.setCursor(0,0);
       lcd.print("KESKIARVOT:");
-      lcd.setCursor(0,2);
+      lcd.setCursor(0,1);
       lcd.print(keskilampoH);
       lcd.print(" C");
-      lcd.setCursor(0,3);
+      lcd.setCursor(0,2);
       lcd.print(keskipaineH);
       lcd.print(" hPa");
-      lcd.setCursor(0,4);
+      lcd.setCursor(0,3);
       lcd.print(keskikosteusH);
       lcd.print(" %");
       delay(10000);
-      lcd.clear();
     }
 
-    if(inputString = "paiva") 
+    //päivän keskiarvot
+
+    if(inputString == "paiva") 
     {
       lcd.clear();
       Serial.print("Arvoja laskettu summaan:");
@@ -480,24 +486,23 @@ void loop()
       Serial.println(keskipaine);
       Serial.print("Hum:");
       Serial.println(keskikosteus);
-      lcd.setCursor(0,1);
+      lcd.setCursor(0,0);
       lcd.print("KESKIARVOT:");
-      lcd.setCursor(0,2);
+      lcd.setCursor(0,1);
       lcd.print(keskilampo);
       lcd.print(" C");
-      lcd.setCursor(0,3);
+      lcd.setCursor(0,2);
       lcd.print(keskipaine);
       lcd.print(" hPa");
-      lcd.setCursor(0,4);
+      lcd.setCursor(0,3);
       lcd.print(keskikosteus);
       lcd.print(" %");
       delay(10000);
-      lcd.clear();
     }
-   
-   //maksimien ja minimien nollaus
-   
-   if (inputString == "nollaus")
+
+    //maksimien ja minimien nollaus
+
+    if (inputString == "nollaus")
     {
       lcd.clear();
       /*  
@@ -516,50 +521,7 @@ void loop()
       delay(2500);
       lcd.clear();
     }
-   //top kek -tier komennot
-   
-   if(inputString == "fitta")
-    {
-      lcd.clear();
-      lcd.setCursor(0,0);
-      lcd.print("Om hade jag en");
-      lcd.setCursor(0,1);
-      lcd.print("pistol skulle jag");
-      lcd.setCursor(0,2);
-      lcd.print("satta en kula precis");
-      lcd.setCursor(9,3);
-      lcd.print("har");
-      delay(5000);
-      lcd.clear();
-    }
-  
-   //itsetuho
-   
-   if(inputString == "meltdown")
-   {
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print("Selfdestruct");
-    lcd.setCursor(0,1);
-    lcd.print("sequence initiated");
-    lcd.setCursor(9,3);
-    delay(1000); 
-    for(int k = 5; i < 1; i--)
-    {
-       lcd.print("T-");
-       lcd.print(k);
-       delay(1000);
-    }
-    lcd.setCursor(0,0);
-    lcd.print("Sequence failed.");
-    lcd.setCursor(0,1);
-    lcd.print("Nuclear payload");
-    lcd.setCursor(0,2);
-    lcd.print("not detected.");
-    delay(5000);
-    lcd.clear();
-   }
-   
+
     inputString = ""; //tyhjennetään muuttuja
   }
 }
