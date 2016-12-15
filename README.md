@@ -56,3 +56,6 @@ Lisätty arvioituKorkeus-koodinpätkä, ei vielä testattu. Tällä pitäisi onn
 
 14.12.2016
 weatherstation_advanced-koodiin päivitetty tuntien ja päivien keskiarvolukemien laskemiset, maksimien ja minimien tallentamiset sekä nollaamiset ja kellonajan muuttaminen sarjamonitorissa (ei varmuutta toimivuudesta). -VV
+
+15.12.2016
+Ötököitä liiskattu. Laite valmis. -VV
