@@ -345,6 +345,7 @@ void loop()
       syotettyPaine = Serial.parseFloat();
       Serial.println(syotettyPaine);
       korkeus = 44330 * (1.0 - pow(hPa/syotettyPaine, 0.1903));
+      lcd.clear();
       lcd.setCursor(0,0);
       lcd.print("Arvioitu korkeus");
       lcd.setCursor(0,1);
